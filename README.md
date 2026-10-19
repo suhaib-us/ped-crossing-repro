@@ -43,6 +43,18 @@ Only about 17.5% of the test samples are crossing, so a model that always predic
 "not crossing" already reaches about 0.825 accuracy. That is why recall and AUC are
 shown next to accuracy, and why the accuracy panel includes that baseline.
 
+What the curves show: accuracy stays between 0.82 and 0.84 at every time point,
+which is essentially the "always not crossing" baseline. Recall for crossing
+pedestrians is about 0.60 to 0.69 and AUC is about 0.84 to 0.86, with no clear
+trend over time to event. The AUC intervals overlap at every time point, so the
+differences between time points are within noise.
+
+A note on AUC: the AUC in the results table (0.754) is the AUC of hard 0/1
+predictions, which equals the mean of recall on crossing and on non-crossing
+pedestrians. The AUC in this figure is computed from the model's probabilities, and
+is higher (0.853 over all samples pooled). The two are not comparable, and only the
+first one corresponds to the numbers reported by the benchmark.
+
 Limitations: this is a single trained model. The paper's own breakdown by time to
 event may use different bins, so this is an analysis in the same spirit and not a
 reproduction of that figure. The script is scripts/plot_tte_metrics.py.
