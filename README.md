@@ -29,6 +29,24 @@ sit slightly above the paper on most metrics. This is not evidence of an improve
 since the paper reports one run per setup. Per-seed results are in results/seeds,
 and the summary is in results/seeds/summary.txt.
 
+## Analysis by time to event
+
+![Metrics by time to event](figures/metrics_vs_tte.png)
+
+The figure shows accuracy, recall for the crossing class and AUC as a function of
+time to event (30 to 60 frames), for the Static VGG16 model on the JAADall test set.
+It uses the saved predictions of one run (the baseline run, not the seed average).
+Shaded bands are 95% intervals from resampling whole pedestrians, because samples
+from the same pedestrian are not independent.
+
+Only about 17.5% of the test samples are crossing, so a model that always predicts
+"not crossing" already reaches about 0.825 accuracy. That is why recall and AUC are
+shown next to accuracy, and why the accuracy panel includes that baseline.
+
+Limitations: this is a single trained model. The paper's own breakdown by time to
+event may use different bins, so this is an analysis in the same spirit and not a
+reproduction of that figure. The script is scripts/plot_tte_metrics.py.
+
 ## Setup used
 
 * Ubuntu 22.04, one RTX 2080 Ti, Python 3.9, TensorFlow 2.10.1, numpy 1.23.5
